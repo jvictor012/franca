@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="formulario">
+        <form action="/cad_login" method="post" id="login">
+            <h1>Faça seu login!</h1>
+            <label id="name">Nome de usuário:</label><input for="name" type="text" name="name">
+            <label id="name">Senha de usuário:</label><input for="name" type="password" name="password">
+            <button>Fazer login</button>
+        </form>
+    </div>
+    <button id="cadastrar" onclick="cadastrar()">Cadastrar-se</button>
+    <script src="/static/login.js"></script>
 </body>
 </html>
