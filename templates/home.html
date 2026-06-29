@@ -11,7 +11,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -49,7 +49,35 @@
 
         <div class="container">
 
-            <!-- Banner principal -->
+            <div class="hero">
+
+                <div class="hero-texto">
+
+                    <span class="subtitulo">COPA DO MUNDO 2026</span>
+
+                    <h2>
+                        FRANÇA <br>
+                        EM BUSCA DO <br>
+                        TRICAMPEONATO
+                    </h2>
+
+                    <p>
+                        Acompanhe notícias, jogos, estatísticas e a caminhada da seleção francesa em busca do seu terceiro título mundial.
+                    </p>
+
+                    <a href="#noticias" class="btn">
+                        Saiba Mais
+                    </a>
+
+                </div>
+
+                <div class="hero-imagem">
+
+                    <img src="{{ url_for('static', filename='img/banner.png') }}" alt="Seleção Francesa">
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -60,7 +88,57 @@
 
         <div class="container">
 
-            <!-- Notícias -->
+            <div class="titulo-secao">
+
+                <h2>Últimas Notícias</h2>
+
+                <a href="#">Ver todas</a>
+
+            </div>
+
+            <div class="cards-noticias">
+
+                <article class="noticia">
+
+                    <img src="{{ url_for('static', filename='img/noticia1.jpg') }}" alt="">
+
+                    <div class="texto-noticia">
+
+                        <span class="categoria">Seleção</span>
+
+                        <h3>
+                            França divulga lista de convocados para a Copa de 2026
+                        </h3>
+
+                        <p>
+                            Didier Deschamps anunciou os 26 jogadores que disputarão o Mundial.
+                        </p>
+
+                    </div>
+
+                </article>
+
+                <article class="noticia">
+
+                    <img src="{{ url_for('static', filename='img/noticia2.jpg') }}" alt="">
+
+                    <div class="texto-noticia">
+
+                        <span class="categoria">Mbappé</span>
+
+                        <h3>
+                            "Meu sonho é conquistar o tricampeonato"
+                        </h3>
+
+                        <p>
+                            O camisa 10 falou sobre a preparação da seleção francesa.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
 
         </div>
 
