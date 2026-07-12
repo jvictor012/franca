@@ -1,193 +1,266 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>França na Copa 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>França na Copa 2026</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
+<header>
+  <div class="container">
+    <div class="logo">
+        <img src="/static/img/selecao-francesa-de-futebol.svg" alt="Seleção Francesa" class="logo-img">
+        <div class="logo-texto">
+            <h1>FRANCE</h1>
+            <span>BLOG</span>
+        </div>
+    </div>
+    <nav class="menu-links">
+      <a href="#inicio">Home</a>
+      <a href="#noticias">Notícias</a>
+      <a href="#jogos">Jogos</a>
+      <a href="#selecao">Seleção</a>
+      <a href="#historia">Mais</a>
+    </nav>
+  </div>
+</header>
 
-        <div class="container">
+<section id="inicio">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-texto">
+        <div class="tricolor-bar"><span></span><span></span><span></span></div>
+        <span class="subtitulo">COPA DO MUNDO 2026</span>
+        <h2>FRANÇA EM BUSCA<br>DO <em>TRICAMPEONATO</em></h2>
+        <p>Acompanhe notícias, jogos, estatísticas e a caminhada da seleção francesa em busca do seu terceiro título mundial.</p>
+        <a href="#noticias" class="btn">Saiba mais →</a>
+      </div>
 
-            <div class="logo">
+      <div class="scoreboard">
+        <div class="scoreboard-top">
+          <span><span class="scoreboard-dot"></span>{{placar.detalhe}}</span>
+        </div>
+        <div class="score-row">
+          <div>
+            <div class="score-num">{{placar.placarf}}</div>
+            <div class="score-label">França</div>
+          </div>
+          <div class="score-vs">X</div>
+          <div style="text-align:right">
+            <div class="score-num">{{placar.placaro}}</div>
+            <div class="score-label">{{placar.adversario}}</div>
+          </div>
+        </div>
+        <div class="scoreboard-foot">
+          <span>{{placar.footer}}</span>
+        </div>
+      </div>
+    </div>  
+  </div>
+</section>
 
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo França">
+<section id="noticias">
+  <div class="container">
+    <div class="titulo-secao">
+      <div>
+        <span class="eyebrow">Direto de campo</span>
+        <h2>Últimas notícias</h2>
+      </div>
+    </div>
 
-                <div class="logo-texto">
-                    <h1>FRANCE</h1>
-                    <span>BLOG</span>
-                </div>
+    <div class="cards-noticias">
+      {% for noticia in noticias %}
+      <article class="noticia">
+        <span class="categoria">{{ noticia.detalhe }}</span>
+        <h3>{{ noticia.titulo }}</h3>
+        <p>{{ noticia.conteudo }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
+<section id="jogos">
+  <div class="container">
+    <div class="titulo-secao">
+      <div>
+        <span class="eyebrow">Números da campanha</span>
+        <h2>Retrospecto</h2>
+      </div>
+    </div>
+
+    <div class="estatisticas-jogos">
+      <div class="stat-card"><h3>18</h3><p>Vitórias</p></div>
+      <div class="stat-card"><h3>5</h3><p>Empates</p></div>
+      <div class="stat-card"><h3>3</h3><p>Derrotas</p></div>
+    </div>
+
+    <div class="titulo-secao">
+      <div>
+        <span class="eyebrow">Agenda</span>
+        <h2>Próximos jogos</h2>
+      </div>
+    </div>
+
+    <div class="jogos-lista">
+      <div class="jogo-linha">
+        <span class="jogo-fase">Fase de grupos</span>
+        <span class="jogo-confronto">França <span>x</span> Áustria</span>
+        <span class="jogo-data">15 de junho de 2026 — 16h (Brasília)</span>
+      </div>
+      <div class="jogo-linha">
+        <span class="jogo-fase">Fase de grupos</span>
+        <span class="jogo-confronto">França <span>x</span> Uruguai</span>
+        <span class="jogo-data">21 de junho de 2026 — 13h (Brasília)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="selecao">
+  <div class="container">
+    <div class="titulo-secao">
+      <div>
+        <span class="eyebrow">Time titular</span>
+        <h2>Escalação e formação</h2>
+      </div>
+    </div>
+    <span class="formacao-tag">⚽ Formação principal: 4-3-3</span>
+
+    <div class="campo">
+      <div class="linha-formacao">
+        <div>
+          <p class="linha-titulo">Ataque</p>
+          <div class="linha-jogadores">
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://media.gettyimages.com/id/2284678444/pt/foto/philadelphia-pennsylvania-kylian-mbappe-of-france-celebrates-the-teams-1-0-victory-in-the-fifa.jpg?s=612x612&w=0&k=20&c=N68EAcVr9Pg5_jfVGIXmGdUkQu0OvOWyvYxbf3R5u9Q=" alt="Mbappé"></div>
+              <p>Mbappé</p>
             </div>
-
-            <button class="menu-btn">
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
-        </div>
-
-    </header>
-
-    <!-- INÍCIO -->
-    <section id="inicio">
-
-        <div class="container">
-
-            <div class="hero">
-
-                <div class="hero-texto">
-
-                    <span class="subtitulo">COPA DO MUNDO 2026</span>
-
-                    <h2>
-                        FRANÇA <br>
-                        EM BUSCA DO <br>
-                        TRICAMPEONATO
-                    </h2>
-
-                    <p>
-                        Acompanhe notícias, jogos, estatísticas e a caminhada da seleção francesa em busca do seu terceiro título mundial.
-                    </p>
-
-                    <a href="#noticias" class="btn">
-                        Saiba Mais
-                    </a>
-
-                </div>
-
-                <div class="hero-imagem">
-
-                    <img src="{{ url_for('static', filename='img/banner.png') }}" alt="Seleção Francesa">
-
-                </div>
-
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://imgs.search.brave.com/0YBA3eB46Vi_muS-hRFgDj6vfVTOwGFg9niSgLVAxWY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE5/NjAwMTM3Mi9wdC9m/b3RvL3BhcmlzLXNh/aW50LWdlcm1haW5z/LWZyZW5jaC1mb3J3/YXJkLW91c21hbmUt/ZGVtYmVsZS1jZWxl/YnJhdGVzLXNjb3Jp/bmctdGhlLTAtNC1k/dXJpbmctdGhlLXVl/ZmEuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPWNLOUlWR2ZW/VkZBU1pFNVBOZ3R3/bGNGLTdUM21feUlX/VWI0dU5USnJfNWM9" alt="Dembélé"></div>
+              <p>Dembélé</p>
             </div>
-
-        </div>
-
-    </section>
-
-    <!-- NOTÍCIAS -->
-    <section id="noticias">
-
-        <div class="container">
-
-            <div class="titulo-secao">
-
-                <h2>Últimas Notícias</h2>
-
-                <a href="#">Ver todas</a>
-
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://media.gettyimages.com/id/2266003496/pt/foto/paris-france-bradley-barcola-of-paris-saint-germain-celebrates-scoring-his-teams-first-goal.jpg?s=612x612&w=0&k=20&c=RE9-ibqUdTZG18pxzWj5tSA1sBbOFA9YfyUk2xebfIc=" alt="Barcola"></div>
+              <p>Barcola</p>
             </div>
+          </div>
+        </div>
 
-            <div class="cards-noticias">
-
-                <article class="noticia">
-
-                    <img src="{{ url_for('static', filename='img/noticia1.jpg') }}" alt="">
-
-                    <div class="texto-noticia">
-
-                        <span class="categoria">Seleção</span>
-
-                        <h3>
-                            França divulga lista de convocados para a Copa de 2026
-                        </h3>
-
-                        <p>
-                            Didier Deschamps anunciou os 26 jogadores que disputarão o Mundial.
-                        </p>
-
-                    </div>
-
-                </article>
-
-                <article class="noticia">
-
-                    <img src="{{ url_for('static', filename='img/noticia2.jpg') }}" alt="">
-
-                    <div class="texto-noticia">
-
-                        <span class="categoria">Mbappé</span>
-
-                        <h3>
-                            "Meu sonho é conquistar o tricampeonato"
-                        </h3>
-
-                        <p>
-                            O camisa 10 falou sobre a preparação da seleção francesa.
-                        </p>
-
-                    </div>
-
-                </article>
-
+        <div>
+          <p class="linha-titulo">Meio-campo</p>
+          <div class="linha-jogadores">
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Aurelien_Tchouameni_France_v_Senegal_16_June_2026-447_%28cropped%29.jpg/500px-Aurelien_Tchouameni_France_v_Senegal_16_June_2026-447_%28cropped%29.jpg" alt="Tchouaméni"></div>
+              <p>Tchouaméni</p>
             </div>
-
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://imgs.search.brave.com/MeLNfEZiUJDb8DjYW9BRCLwHHSWgE55rO8AAccr6-6U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9hL2E1L0Fk/cmllbl9SYWJpb3Rf/RnJhbmNlX3ZfU2Vu/ZWdhbF8xNl9KdW5l/XzIwMjYtMzcxXyUy/OGNyb3BwZWQlMjku/anBnLzUxMnB4LUFk/cmllbl9SYWJpb3Rf/RnJhbmNlX3ZfU2Vu/ZWdhbF8xNl9KdW5l/XzIwMjYtMzcxXyUy/OGNyb3BwZWQlMjku/anBn" alt="Rabiot"></div>
+              <p>Rabiot</p>
+            </div>
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://conteudo.imguol.com.br/c/esporte/dd/2024/04/09/eduardo-camavinga-comemora-gol-do-real-madrid-diante-do-manchester-city-na-liga-dos-campeoes-1712693417593_v2_450x450.jpg.webp" alt="Camavinga"></div>
+              <p>Camavinga</p>
+            </div>
+          </div>
         </div>
 
-    </section>
-
-    <!-- JOGOS -->
-    <section id="jogos">
-
-        <div class="container">
-
-            <!-- Próximo jogo -->
-
+        <div>
+          <p class="linha-titulo">Zaga</p>
+          <div class="linha-jogadores">
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://media.gettyimages.com/id/2247974652/pt/foto/munich-germany-dayot-upamecano-of-bayern-munich-celebrates-scoring-his-teams-third-goal-during.jpg?s=612x612&w=0&k=20&c=zer3BQkoGZnlqu2NSx9XsPibE3BAfGTw1zd7CxnwFLc=" alt="Upamecano"></div>
+              <p>Upamecano</p>
+            </div>
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/William_Saliba_France_v_Norway_26_June_26-044.jpg/500px-William_Saliba_France_v_Norway_26_June_26-044.jpg" alt="Saliba"></div>
+              <p>Saliba</p>
+            </div>
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://wallpapers4screen.com/Uploads/17-11-2025/92758/thumb2-theo-hernandez-4k-blue-neon-lights-al-hilal-sfc-saudi-professional-league.jpg" alt="Hernández"></div>
+              <p>Hernández</p>
+            </div>
+          </div>
         </div>
 
-    </section>
-
-    <!-- SELEÇÃO -->
-    <section id="selecao">
-
-        <div class="container">
-
-            <!-- Elenco + Estatísticas -->
-
+        <div>
+          <p class="linha-titulo">Goleiro</p>
+          <div class="linha-jogadores">
+            <div class="jogador-bloco">
+              <div class="jogador-img-wrap"><img src="https://library.sportingnews.com/styles/crop_style_16_9_1200_webp/s3/2026-07/Maignan%2007092026.jpg.webp?itok=07mSFnir" alt="Mike Maignan"></div>
+              <p>Maignan</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </section>
+<section id="historia">
+  <div class="container">
+    <div class="titulo-secao">
+      <div>
+        <span class="eyebrow">Identidade</span>
+        <h2>País, continente e títulos</h2>
+      </div>
+    </div>
 
-    <!-- HISTÓRIA -->
-    <section id="historia">
+    <div class="estatisticas-pais">
+      <div class="stat-card"><h3 style="font-size:1.8rem">França</h3><p>País</p></div>
+      <div class="stat-card"><h3 style="font-size:1.8rem">Europa</h3><p>Continente</p></div>
+      <div class="stat-card"><h3>2</h3><p>Títulos (1998 e 2018)</p></div>
+    </div>
 
-        <div class="container">
+    <div class="titulo-secao">
+      <div>
+        <span class="eyebrow">Linha do tempo</span>
+        <h2>Participações anteriores na Copa</h2>
+      </div>
+    </div>
 
-            <!-- História da França -->
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="categoria">Copa 2022</span>
+        <h3>Vice-campeã</h3>
+        <p>Perdeu para a Argentina na final, nos pênaltis, em uma das decisões mais eletrizantes da história.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="categoria">Copa 2018</span>
+        <h3>Campeã</h3>
+        <p>Conquistou o segundo título mundial na Rússia, com Mbappé se destacando ainda muito jovem.</p>
+      </div>
+    </div>
 
-        </div>
+    <div class="titulo-secao">
+      <div>
+        <span class="eyebrow">Símbolo</span>
+        <h2>Curiosidade</h2>
+      </div>
+    </div>
 
-    </section>
+    <div class="curiosidade">
+      <div class="logo">
+        <img src="/static/img/selecao-francesa-de-futebol.svg" alt="Seleção Francesa" class="logo-img">
+    </div>
+      <p><b>O galo (Le Coq Gaulois)</b> é o símbolo tradicional da seleção francesa desde o século XIX, presente no escudo e associado ao espírito de luta do time.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-
-        <div class="container">
-
-            <p>France Blog © 2026</p>
-
-        </div>
-
-    </footer>
+<footer>
+  <div class="container">
+    <p>France Blog © 2026</p>
+  </div>
+</footer>
 
 </body>
-
 </html>
